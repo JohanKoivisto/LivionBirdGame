@@ -1,4 +1,5 @@
-let birds = ["Ostrich", "Treecreeper", "Oxpecker", "Mockinbird", "Snowfinch", "Whitestart", "Meadowlark", "Oropendola", "Crescentchest", "Bustard"]
+// setting up
+let birds = ["ostrich", "treecreeper", "oxpecker", "mockinbird", "snowfinch", "whitestart", "meadowlark", "oropendola", "crescentchest", "bustard"]
 let easymode = false;
 const birdOutput = document.getElementById("bird-name");
 let birdCountOutput = document.getElementById("bird-count")
@@ -24,10 +25,14 @@ window.addEventListener('keypress', e => {
     birdGame();
 }, false);
 
+// game "logic"
 const birdGame = () => {
    if (key === currentBird[0].slice(0, 1)) {
+    // check if correct key was pressed and replace char with "" if so, then reverse so we check for last key of string next in position 0
     currentBird = currentBird.slice(1).split("").map(char => char === key ? char = "" : char = char).reverse().join("")
+    // replace guessed chars with "_"
     birds[0] = birds[0].split("").map(char => char === key ? char = "_" : char = char).join("")
+    // if easymode is on hilight key you need to press next
     easymode ? birdOutput.innerHTML = birds[0].replace(currentBird[0], `<span class="current-key">${currentBird[0]}</span>`)
     : birdOutput.innerHTML = birds[0]
     birds[0].replace(/_/g, "").length === 0 ? nextBird() : null
@@ -50,7 +55,7 @@ const newGameInit = () => {
  */
 const gameOver = () => {
     birdOutput.innerHTML = `Well done! Press any key to play again`
-    birds = ["Ostrich", "Treecreeper", "Oxpecker", "Mockinbird", "Snowfinch", "Whitestart", "Meadowlark", "Oropendola", "Crescentchest", "Bustard"]
+    birds = ["ostrich", "treecreeper", "oxpecker", "mockinbird", "snowfinch", "whitestart", "meadowlark", "oropendola", "crescentchest", "bustard"]
     shuffle(birds)
     currentBird = birds[0]
     birdsLeft = birds.length
@@ -62,9 +67,9 @@ const gameOver = () => {
  */
 const nextBird = () => {
     birds.shift();
-        birdsLeft--;
-        currentBird = birds[0]
-        birdOutput.innerHTML = birds[0];
+    birdsLeft--;
+    currentBird = birds[0]
+    birdOutput.innerHTML = birds[0];
 }
 
 

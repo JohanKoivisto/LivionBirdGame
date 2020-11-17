@@ -32,7 +32,7 @@ h3 {
   margin-top: 50px;
   border: solid 1em #333;
   border-radius: 32px;
-  border-color: grey;
+  border-color: rgb(211, 211, 211);
   padding: 20px;
 }
 
@@ -100,7 +100,7 @@ h3 {
   }
 
 
-  /* crt effect http://aleclownes.com/2017/02/01/crt-display.html */
+  /* crt effect. from: http://aleclownes.com/2017/02/01/crt-display.html */
 .crt::before {
     content: " ";
     display: block;
